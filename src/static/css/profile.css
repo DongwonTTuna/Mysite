@@ -1,0 +1,57 @@
+.profile_img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.img {
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 100px;
+  text-align: center;
+}
+.profile {
+  height: 600px;
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 150px;
+  font-weight: lighter;
+  position: relative;
+  background-color: rgba(53, 52, 52, 0.878);
+  border-radius: 3%;
+  padding: 10px;
+  color: rgba(255, 255, 255, 0.771);
+}
+p {
+  font-size: 1.7rem;
+}
+li {
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+button {
+  font-size: 3rem;
+  font-weight: 100;
+  color: rgba(255, 255, 255, 0.771);
+  border: 0;
+  background-color: transparent;
+}
+.input {
+  height:100%;
+  margin: 0;
+}
+.next-button {
+  position: absolute;
+  right: 3%;
+  bottom: 40px;
+  cursor: pointer;
+}
+.previous-button{
+    position: absolute;
+    left: 3%;
+    bottom:40px;
+    cursor:pointer;
+}
+.arrow{
+    height: 40px;
+    filter: invert(80%);
+}
