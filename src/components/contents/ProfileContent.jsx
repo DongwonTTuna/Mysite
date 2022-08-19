@@ -1,5 +1,5 @@
 import React from "react";
-import profileimg from "../assets/img/Maguro.jpeg";
+import profileimg from "../../static/img/Maguro.jpeg";
 export default function (props) {
   switch (props.page) {
     case 0:
@@ -8,13 +8,13 @@ export default function (props) {
           <div className="img">
             <img className="profile_img" src={profileimg} />
           </div>
-          <div className="img">
-            イ・ドンウォン
-            <br />
+          <div className="info">
+            <p>Dongwon Lee</p>
             mail@dongwonttuna.men
           </div>
         </div>
       );
-      break;
+    case 1:
+      return <div className="input">yyyyyyy</div>;
   }
 }

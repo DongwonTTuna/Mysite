@@ -1,36 +1,47 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState} from "react"
+import nextarrow from "../static/img/next.png"
+import previous from "../static/img/previous.png"
+import { AnimatePresence, motion } from "framer-motion"
+import "../static/css/profile.css"
+import ProfileContent from "./contents/ProfileContent"
+const max_page = 9
 
-import nextarrow from "../assets/img/next.png";
-import previous from "../assets/img/previous.png";
-import "../static/css/profile.css";
-import ProfileContent from "./ProfileContent";
-const max_page = 9;
 
-export default function () {
-  const Page = useRef(0);
-  const [update, SetUpdate] = useState(false);
+
+export default function (props) {
+  const [Page, SetPage] = useState(0);
+
   const NextPage = () => {
-    Page.current += 1;
-    SetUpdate(!update);
+    SetPage(Page + 1);
   };
   const PreviousPage = () => {
-    Page.current -= 1;
-    SetUpdate(!update);
+    SetPage(Page - 1);
   };
-
   return (
+    <div className="forprofileref" ref={props.profile}>
     <div className="profile">
-      <ProfileContent page={Page.current} />
-      {Page.current !== 0 && (
-        <button className="previous-button" onClick={() => PreviousPage()}>
+      <AnimatePresence exitBeforeEnter initial={true}>
+        <motion.div
+          key={Math.random()}
+          initial={{ opacity: 0 }}
+          animate= {{ opacity: 1 }}
+          exit = {{ opacity: 0 }}
+          transition={{ duration: 0.3, type: "easeInOut" }}
+        >
+          <ProfileContent page={Page} />
+        </motion.div>
+      </AnimatePresence>
+      {Page !== 0 && (
+        <button className="button previous-button" onClick={(e) => PreviousPage(e)}>
           <img className="arrow" src={previous} />
         </button>
       )}
-      {Page.current !== max_page && (
-        <button className="next-button" onClick={() => NextPage()}>
+      {Page !== max_page && (
+        <button className="button next-button" onClick={(e) => NextPage(e)}>
           <img className="arrow" src={nextarrow} />
         </button>
       )}
+    </div>
     </div>
   );
 }
