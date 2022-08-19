@@ -25,10 +25,11 @@
   top:150px;
   font-weight: 200;
   position: relative;
-  background-color: rgba(53, 52, 52, 0.878);
+  background-color: rgb(56, 56, 56);
   border-radius: 20px;
   padding: 10px;
   color: rgba(255, 255, 255, 0.771);
+  z-index:10;
 }
 p {
   font-size: 1.7rem;

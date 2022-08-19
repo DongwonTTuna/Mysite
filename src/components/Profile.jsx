@@ -20,7 +20,7 @@ export default function (props) {
   return (
     <div className="forprofileref" ref={props.profile}>
     <div className="profile">
-      <AnimatePresence exitBeforeEnter initial={true}>
+      <AnimatePresence mode="wait" initial={true}>
         <motion.div
           key={Math.random()}
           initial={{ opacity: 0 }}

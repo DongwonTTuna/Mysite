@@ -12,13 +12,15 @@
   margin-bottom: 50px;
 }
 .skills-body {
+  position: relative;
   width: 1400px;
   height: max-content;
   min-height: 1000px;
-  background-color: rgba(53, 52, 52, 0.878);
+  background-color: rgb(56, 56, 56);
   padding: 20px;
   border-radius: 10px;
   text-align: center;
+  z-index: 10;
 }
 .gridd {
   display: grid;
@@ -69,11 +71,17 @@
   scale: 1.2;
   transition: all 0.2s ease-in-out;
 }
+.gridd .text{
+    font-size: 40px;
+    position: absolute;
+    top:9%;
+    left:20%;
+}
 @media screen and (min-width: 0px) and (max-width: 768px) {
   .skills-body {
     width: 460px;
   }
-  .grid{
+  .grid {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -81,21 +89,25 @@
   .skills-body {
     width: 700px;
   }
-  .grid{
+  .grid {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  .go {
+    background-image: url("../img/go.png");
+    background-size: 50px 100px;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1280px) {
   .skills-body {
     width: 980px;
   }
-  .grid{
+  .grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 .go {
-  background-image: url("../img/golang.png");
+  background-image: url("../img/go.png");
   background-size: 133px 118px;
 }
 .java {
@@ -143,10 +155,10 @@
   background-image: url("../img/jquery.png");
   background-size: 100px 100px;
 }
-.grid div:hover::before{
-    position:absolute;
-    font-size: 20px;
-    transform : translate(0,-50%)
+.grid div:hover::before {
+  position: absolute;
+  font-size: 20px;
+  transform: translate(0, -50%);
 }
 
 .go:hover::before {

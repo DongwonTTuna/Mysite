@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import Profile from "./components/Profile";
 import Skills from "./components/Skills";
 import { AnimatePresence, motion } from "framer-motion";
+
 function App() {
   const profile = useRef(false);
   const skill = useRef(false);
