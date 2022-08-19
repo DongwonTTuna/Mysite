@@ -60,7 +60,6 @@
   border-radius: 10px;
   height: 180px;
   display: grid;
-  flex-direction: column;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   row-gap: 40px;
   width: 100%;
@@ -69,6 +68,30 @@
 .grid div:hover {
   scale: 1.2;
   transition: all 0.2s ease-in-out;
+}
+@media screen and (min-width: 0px) and (max-width: 768px) {
+  .skills-body {
+    width: 460px;
+  }
+  .grid{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .skills-body {
+    width: 700px;
+  }
+  .grid{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+  .skills-body {
+    width: 980px;
+  }
+  .grid{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .go {
@@ -114,81 +137,63 @@
 .django {
   background-image: url("../img/django.png");
   background-size: 130px 130px;
-  filter: invert(20%);
+  filter: invert(25%);
 }
 .jquery {
   background-image: url("../img/jquery.png");
   background-size: 100px 100px;
 }
+.grid div:hover::before{
+    position:absolute;
+    font-size: 20px;
+    transform : translate(0,-50%)
+}
+
 .go:hover::before {
   content: "Golang";
-  position: absolute;
   bottom: -20px;
-  left: 30%;
 }
 .rust:hover::before {
   content: "Rust";
-  position: absolute;
-  bottom: -25px;
-  left: 33%;
+  bottom: -30px;
 }
 .js:hover::before {
   content: "Javascript";
-  position: absolute;
   bottom: -30px;
-  left: 10%;
 }
 .ts:hover::before {
   content: "Typescript";
-  position: absolute;
   bottom: -30px;
-  left: 9%;
 }
 .java:hover::before {
   content: "Java";
-  position: absolute;
-  bottom: -30px;
-  left: 32%;
+  bottom: -35px;
 }
 .html:hover::before {
   content: "HTML";
-  position: absolute;
   bottom: -30px;
-  left: 34px;
 }
 .php:hover::before {
   content: "PHP";
-  position: absolute;
   bottom: -15px;
-  left: 33%;
 }
 .python:hover::before {
   content: "Python";
-  position: absolute;
-  bottom: -20px;
-  left: 23%;
+  bottom: -30px;
 }
 .react:hover::before {
   content: "React";
-  position: absolute;
   bottom: -30px;
-  left: 28%;
 }
 .svelte:hover::before {
   content: "Svelte";
-  position: absolute;
   bottom: -30px;
-  left: 26%;
 }
 .django:hover::before {
   content: "Django";
-  position: absolute;
   bottom: -20px;
-  left: 22%;
 }
 .jquery:hover::before {
-  content: "JQeury";
-  position: absolute;
+  content: "jQeury";
   bottom: -30px;
-  left: 20%;
 }
