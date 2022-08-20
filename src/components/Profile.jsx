@@ -1,12 +1,13 @@
-import React, { useState} from "react"
-import nextarrow from "../static/img/next.png"
-import previous from "../static/img/previous.png"
-import { AnimatePresence, motion } from "framer-motion"
-import "../static/css/profile.css"
-import ProfileContent from "./contents/ProfileContent"
-const max_page = 9
-
-
+import React, { useState } from "react";
+import nextarrow from "../static/img/next.png";
+import previous from "../static/img/previous.png";
+import { Box, Container, chakra, Button, Image } from "@chakra-ui/react";
+import { motion, isValidMotionProp,AnimatePresence } from "framer-motion";
+import ProfileContent from "./contents/ProfileContent";
+const max_page = 9;
+const ChakraBox = chakra(motion.div, {
+  shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
+});
 
 export default function (props) {
   const [Page, SetPage] = useState(0);
@@ -18,30 +19,68 @@ export default function (props) {
     SetPage(Page - 1);
   };
   return (
-    <div className="forprofileref" ref={props.profile}>
-    <div className="profile">
-      <AnimatePresence mode="wait" initial={true}>
-        <motion.div
+    <Box ref={props.profile} position={"relative"} width={"100%"}>
+      <Container
+        minH="1000px"
+        minW="1400px"
+        margin="0 auto"
+        position="relative"
+        top="150px"
+        fontWeight="light"
+        backgroundColor="rgba(56,56,56)"
+        borderRadius="20px"
+        zIndex="10"
+      >
+        <AnimatePresence mode="wait" exitBeforeEnter initial={true}>
+        <ChakraBox
           key={Math.random()}
           initial={{ opacity: 0 }}
-          animate= {{ opacity: 1 }}
-          exit = {{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.3, type: "easeInOut" }}
         >
           <ProfileContent page={Page} />
-        </motion.div>
-      </AnimatePresence>
-      {Page !== 0 && (
-        <button className="button previous-button" onClick={(e) => PreviousPage(e)}>
-          <img className="arrow" src={previous} />
-        </button>
-      )}
-      {Page !== max_page && (
-        <button className="button next-button" onClick={(e) => NextPage(e)}>
-          <img className="arrow" src={nextarrow} />
-        </button>
-      )}
-    </div>
-    </div>
+        </ChakraBox>
+        </AnimatePresence>
+        {Page !== 0 && (
+          <Button
+            position="absolute"
+            role="group"
+            left="1%"
+            bottom="40px"
+            cursor="pointer"
+            onClick={(e) => PreviousPage(e)}
+          >
+            <Image
+              height="40px"
+              filter="invert(80%)"
+              opacity="0.1"
+              transition="all 0.4s ease-in-out"
+              _groupHover={{ opacity: 1 }}
+              src={previous}
+            />
+          </Button>
+        )}
+        {Page !== max_page && (
+          <Button
+            position="absolute"
+            role="group"
+            right={"1%"}
+            bottom={"40px"}
+            cursor={"pointer"}
+            onClick={(e) => NextPage(e)}
+          >
+            <Image
+              height="40px"
+              filter="invert(80%)"
+              opacity="0.1"
+              transition="all 0.4s ease-in-out"
+              _groupHover={{ opacity: 1 }}
+              src={nextarrow}
+            />
+          </Button>
+        )}
+      </Container>
+    </Box>
   );
 }
