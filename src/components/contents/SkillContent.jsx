@@ -196,7 +196,7 @@ const PrevNextButton = (props) => {
           bottom="40px"
           cursor="pointer"
           onClick={() => {
-            if(props.data.page === 2) document.getElementById('logoimg')?.remove()
+            if(props.data.page === 2) {document.getElementById('skill_desc_icon').style.opacity = 1;document.getElementById('logoimg')?.remove()}
             props.update({
               page: previous_page > 1 ? previous_page : 1,
               content: previous_page > 1 ? props.data.content : "main",
@@ -265,7 +265,7 @@ const importMotiondiv = (props) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 2.7 }}
+        transition={{ duration: 0.3, delay: 2.5 }}
       >
         {text}
       </motion.div>
@@ -278,18 +278,6 @@ export default function (props) {
   let frameworks = ["django", "react", "svelte"];
   let libraries = ["jquery"];
   let certifications = [""];
-  const variant = {
-    ani: {
-      scale: [5, 1, 1],
-      top: ["45%", "45%", "5%"],
-      left: ["45%", "45%", "5%"],
-    },
-    larger: {
-      scale: [5, 1.5, 1.5],
-      top: ["45%", "45%", "5%"],
-      left: ["45%", "45%", "7%"],
-    },
-  };
   console.log(props);
   if (props.data.content === "main")
     return (
@@ -311,6 +299,7 @@ export default function (props) {
             src={image}
             position="absolute"
             top="5%"
+            left={props.data.content === "django" ? "7%" : props.data.content === "go" ? "7%" : "5%"}
             transform={
               props.data.content === "go"
                 ? "scale(1.5)"
@@ -318,7 +307,8 @@ export default function (props) {
                 ? "scale(1.5)"
                 : ""
             }
-            left="7%"
+            opacity="0"
+            id="skill_desc_icon"
           ></Image>
           <Text fontSize="40px" position="absolute" top="9%" left="20%">
             {SetText(props.data.content)}
