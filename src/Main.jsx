@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Box, chakra } from "@chakra-ui/react";
-import { motion, isValidMotionProp ,AnimatePresence } from "framer-motion";
+import { motion, isValidMotionProp, AnimatePresence } from "framer-motion";
 import Nav from "./components/Nav";
 import Profile from "./components/Profile";
 import Skills from "./components/Skills";
@@ -22,22 +22,20 @@ function App() {
       lineHeight={"24px"}
       fontWeight="normal"
       fontSize={"24px"}
-      overscrollBehavior="none"
     >
       <Nav profile={profile} skill={skill} work={works} />
-      <AnimatePresence exitBeforeEnter initial={true} >
-      <ChakraBox
-        initial={{ opacity: 0, x: 0, y: 20 }}
-        animate={{ opacity: 1, x: 0, y: 0 }}
-        exit={{ opacity: 0, x: 0, y: 20 }}
-        transition={{ duration: 0.3, type: "easeInOut" }}
-      >
-        <Profile profile={profile} />
-        <Skills skill={skill} />
-      </ChakraBox>
-      </ AnimatePresence>
+      <AnimatePresence exitBeforeEnter initial={true}>
+        <ChakraBox
+          initial={{ opacity: 0, x: 0, y: 20 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          exit={{ opacity: 0, x: 0, y: 20 }}
+          transition={{ duration: 0.3, type: "easeInOut" }}
+        >
+          <Profile profile={profile} />
+          <Skills skill={skill} />
+        </ChakraBox>
+      </AnimatePresence>
     </Box>
-
   );
 }
 
