@@ -1,27 +1,52 @@
-import React,{useRef} from "react";
-import { Box, Container,Button,Image } from "@chakra-ui/react";
+import React, { useRef } from "react";
+import { Box, Container, Image, chakra } from "@chakra-ui/react";
+import { motion, isValidMotionProp } from 'framer-motion';
 import { useNavigate } from "react-router-dom";
 import profileimg from "../static/img/Maguro.jpeg";
+
+const ChakraBox = chakra(motion.div, {
+  shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
+});
+
 export default function () {
   const navigate = useNavigate();
-  const currentRender = useRef("profile");
+  const currentRender = useRef("");
   return (
     <Box
       minW="100%"
-      paddingY="15px"
+      paddingY="20px"
       transition="all 0.4s ease-in-out"
+      fontSize="28px"
       zIndex="5"
-      bgGradient={"linear(to-r,#343434,#242424,#343434)"}
       _hover={{ backgroundColor: "#373636" }}
       position="relative"
       display="flex"
     >
-      <Button position="absolute" onClick={()=>{
+      <ChakraBox
+        position="absolute"
+        left="20px"
+        top="12px"
+        whileHover={{
+          rotate: 360,
+        }}
+        transition={{
+          duration: 0.7,
+          ease: "easeInOut",
+        }}
+        cursor="pointer"
+      >
+        <Image
+          h="50px"
+          w="60px"
+          borderRadius="50%"
+          src={profileimg}
+          onClick={() => {
+            console.log('click')
             currentRender.current = "";
             navigate("/");
-      }}>
-        <Image h="30px" w="40px"  src={profileimg}/>
-      </Button>
+          }}
+        />
+      </ChakraBox>
       <Container
         w="500px"
         margin="0 auto"
@@ -32,7 +57,6 @@ export default function () {
         <Container
           role="group"
           w="fit-content"
-          fontSize="34px"
           cursor="pointer"
           onClick={() => {
             currentRender.current = "profile";
@@ -57,7 +81,6 @@ export default function () {
         <Container
           role="group"
           w="fit-content"
-          fontSize="34px"
           cursor="pointer"
           onClick={() => {
             currentRender.current = "skill";
@@ -83,7 +106,6 @@ export default function () {
           role="group"
           w="fit-content"
           cursor="pointer"
-          fontSize="34px"
           onClick={() => {
             currentRender.current = "works";
             navigate("/works");

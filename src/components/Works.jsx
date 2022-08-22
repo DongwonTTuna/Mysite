@@ -1,20 +1,11 @@
-import React from 'react'
-import {Box, Container, Text } from '@chakra-ui/react'
-
+import React from "react";
+import ChangePage from "./contents/ChangePage";
+import { Box, Container, Text } from "@chakra-ui/react";
 
 export default () => {
-
-    return (
-
-        <Box>
-
-
-
-            
-        </Box>
-
-    )
-
-
-
-}
+  return (
+    <ChangePage>
+      <Box></Box>
+    </ChangePage>
+  );
+};

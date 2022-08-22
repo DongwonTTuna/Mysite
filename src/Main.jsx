@@ -1,11 +1,10 @@
-import { useRef } from "react";
-import { Box, Container } from "@chakra-ui/react";
+import { Box} from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import Nav from "./components/Nav";
 import Profile from "./components/Profile";
 import Skills from "./components/Skills";
 import { Route, Routes, useLocation } from "react-router-dom";
-import Main from "./components/Main"
+import Main from "./components/Main";
 function App() {
   console.log("render");
   const location = useLocation();
@@ -13,14 +12,13 @@ function App() {
   return (
     <Box
       bgGradient={"linear(to-r,#343434,#242424,#343434)"}
-     minH="100vh"
+      minH="100vh"
       textColor="rgb(232,232,232)"
       lineHeight={"24px"}
       fontWeight="normal"
       fontSize={"24px"}
     >
-      <Nav/>
-
+      <Nav />
       <AnimatePresence exitBeforeEnter initial={true}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Main />} />
@@ -28,7 +26,6 @@ function App() {
           <Route path="/skills" element={<Skills />} />
         </Routes>
       </AnimatePresence>
-
     </Box>
   );
 }

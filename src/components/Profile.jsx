@@ -7,13 +7,13 @@ export default function () {
     <ChangePage>
       <Box position={"relative"} width={"100%"}>
         <Container
-          w="100%"
+          minW="1400px"
+          minH="1000px"
           margin="0 auto"
-          position="relative"
-          top="150px"
+          marginTop="100px"
           fontWeight="light"
           backgroundColor="rgba(56,56,56)"
-          borderRadius="20px"
+          borderRadius="15px"
           zIndex="10"
         >
           <ProfileContent />

@@ -17,7 +17,7 @@ export default function () {
           h="100px"
           bgGradient={"linear(to-r,#343434,#242424,#343434)"}
           fontSize="34px"
-          paddingY="100px"
+          paddingY="70px"
           zIndex="10"
         >
           Skills
