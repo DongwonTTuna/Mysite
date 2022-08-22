@@ -12,9 +12,12 @@ import {
   PopoverContent,
   PopoverBody,
   PopoverArrow,
+  Portal,
+  PopoverHeader,
 } from "@chakra-ui/react";
 import Bitcoin from "../static/img/Bitcoin.png";
 import Ethereum from "../static/img/Ethereum.png";
+import BackgroundImg from "../static/img/bkg.svg";
 const ChakraBox = chakra(motion.article, {
   shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
 });
@@ -31,7 +34,7 @@ export default () => {
       >
         <Container
           position="relative"
-          backgroundImage={"url('/src/static/img/bkg.svg')"}
+          backgroundImage={BackgroundImg}
           backgroundSize="100% 100%"
           backgroundRepeat="no-repeat"
           minH="1200px"
@@ -39,24 +42,33 @@ export default () => {
         >
           <Popover trigger="hover">
             <PopoverTrigger>
-              <Image
-                borderRadius="50%"
+              <Container
+                minH="135px"
                 position="absolute"
                 w="135px"
                 top="432px"
                 left="781px"
-                _hover={{
-                  transform: "scale(1.15) rotate(-20deg)",
-                  boxShadow: "0px 0px 10px gray",
-                }}
-                transition="all 0.3s ease-in-out"
-                src={Bitcoin}
-              />
+              >
+                <Image
+                  borderRadius="50%"
+                  position="absolute"
+                  left="0px"
+                  w="135px"
+                  _hover={{
+                    transform: "scale(1.15) rotate(-20deg)",
+                    boxShadow: "0px 0px 10px gray",
+                  }}
+                  transition="all 0.3s ease-in-out"
+                  src={Bitcoin}
+                  zIndex="10"
+                />
+              </Container>
             </PopoverTrigger>
             <PopoverContent
               w="fit-content"
               backgroundColor="#393939"
               borderColor="#393939"
+              top="15px"
             >
               <PopoverArrow
                 backgroundColor="#393939"
@@ -68,12 +80,18 @@ export default () => {
           </Popover>
           <Popover trigger="hover">
             <PopoverTrigger>
-              <Image
-                borderRadius="50%"
+            <Container
+                minH="135px"
                 position="absolute"
                 w="135px"
                 top="533px"
                 left="1278px"
+              >
+              <Image
+                borderRadius="50%"
+                position="absolute"
+                w="135px"
+                left="0px"
                 _hover={{
                   transform: "scale(1.15) rotate(-20deg)",
                   boxShadow: "0px 0px 10px #627eea",
@@ -81,11 +99,13 @@ export default () => {
                 transition="all 0.3s ease-in-out"
                 src={Ethereum}
               />
+              </Container>
             </PopoverTrigger>
             <PopoverContent
               w="fit-content"
               backgroundColor="#393939"
               borderColor="#393939"
+              top="15px"
             >
               <PopoverArrow
                 backgroundColor="#393939"

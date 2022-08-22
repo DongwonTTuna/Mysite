@@ -114,19 +114,22 @@ const SetBox = (itemname, items, props) => {
             );
           let top;
           if (item === "go" || item === "php" || item === "django") {
-            top = "-30px";
+            top = "-10px";
           } else {
-            top = "";
+            top = "15px";
           }
           return PopOver(
-            <Image
-              src={SetImage(item)}
-              height="110px"
-              width="110px"
-              cursor="pointer"
-              _hover={{ transform: "scale(1.2)" }}
-              transition="all 0.4s ease-in-out"
-            ></Image>,
+            <Container height="110">
+              <Image
+                position="absolute"
+                src={SetImage(item)}
+                height="110px"
+                width="110px"
+                cursor="pointer"
+                _hover={{ transform: "scale(1.2)" }}
+                transition="all 0.4s ease-in-out"
+              ></Image>
+            </Container>,
             item,
             top
           );
@@ -146,6 +149,7 @@ const PopOver = (Div, page, top) => {
         p="2"
         backgroundColor="#242424"
         borderColor="#242424"
+        left="13px"
       >
         <PopoverArrow
           backgroundColor="#242424"
