@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import {BrowserRouter as Router} from 'react-router-dom';
 import App from "./Main";
 import {
   ChakraProvider,
@@ -17,7 +18,9 @@ const theme = extendTheme(
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <Router>
   <ChakraProvider theme={theme}>
     <App />
   </ChakraProvider>
+  </Router>
 );

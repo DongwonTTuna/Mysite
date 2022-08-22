@@ -1,40 +1,34 @@
 import { useRef } from "react";
-import { Box, chakra } from "@chakra-ui/react";
-import { motion, isValidMotionProp, AnimatePresence } from "framer-motion";
+import { Box, Container } from "@chakra-ui/react";
+import { AnimatePresence } from "framer-motion";
 import Nav from "./components/Nav";
 import Profile from "./components/Profile";
 import Skills from "./components/Skills";
-
-const ChakraBox = chakra(motion.article, {
-  shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
-});
-
+import { Route, Routes, useLocation } from "react-router-dom";
+import Main from "./components/Main"
 function App() {
-  const profile = useRef(false);
-  const skill = useRef(false);
-  const works = useRef(false);
   console.log("render");
+  const location = useLocation();
+
   return (
     <Box
       bgGradient={"linear(to-r,#343434,#242424,#343434)"}
-      w="100%"
+     minH="100vh"
       textColor="rgb(232,232,232)"
       lineHeight={"24px"}
       fontWeight="normal"
       fontSize={"24px"}
     >
-      <Nav profile={profile} skill={skill} work={works} />
+      <Nav/>
+
       <AnimatePresence exitBeforeEnter initial={true}>
-        <ChakraBox
-          initial={{ opacity: 0, x: 0, y: 20 }}
-          animate={{ opacity: 1, x: 0, y: 0 }}
-          exit={{ opacity: 0, x: 0, y: 20 }}
-          transition={{ duration: 0.3, type: "easeInOut" }}
-        >
-          <Profile profile={profile} />
-          <Skills skill={skill} />
-        </ChakraBox>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Main />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/skills" element={<Skills />} />
+        </Routes>
       </AnimatePresence>
+
     </Box>
   );
 }

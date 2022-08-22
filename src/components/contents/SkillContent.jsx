@@ -4,16 +4,12 @@ import {
   Container,
   Text,
   Image,
-  Button,
   Popover,
   PopoverTrigger,
   PopoverContent,
   PopoverBody,
   PopoverArrow,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import SkillPage1 from "./SkillPage1";
-import SkillPage2 from "./SkillPage2";
 import go from "../../static/img/go.png";
 import rust from "../../static/img/rust.png";
 import django from "../../static/img/django.png";
@@ -26,24 +22,7 @@ import python from "../../static/img/python.png";
 import react from "../../static/img/react.png";
 import svelte from "../../static/img/svelte.png";
 import ts from "../../static/img/typescript.png";
-import nextarrow from "../../static/img/next.png";
-import previous from "../../static/img/previous.png";
-let back = false
-let maxpage = {
-  go: 3,
-  rust: 3,
-  html: 3,
-  java: 3,
-  js: 3,
-  php: 3,
-  python: 3,
-  ts: 3,
-  django: 3,
-  react: 3,
-  svelte: 3,
-  jquery: 3,
-};
-export const SetText = (page) => {
+const SetText = (page) => {
   switch (page) {
     case "go":
       return "Go Language";
@@ -71,7 +50,7 @@ export const SetText = (page) => {
       return "Typescript";
   }
 };
-export const SetImage = (item) => {
+const SetImage = (item) => {
   switch (item) {
     case "main":
       return "";
@@ -147,9 +126,6 @@ const SetBox = (itemname, items, props) => {
               cursor="pointer"
               _hover={{ transform: "scale(1.2)" }}
               transition="all 0.4s ease-in-out"
-              onClick={() => {
-                props.update({ page: props.data.page, content: item });
-              }}
             ></Image>,
             item,
             top
@@ -181,110 +157,12 @@ const PopOver = (Div, page, top) => {
     </Popover>
   );
 };
-
-const PrevNextButton = (props) => {
-  let previous_page = props.data.page - 1;
-  let next_page = props.data.page + 1;
-  return (
-    <>
-      <Button
-        position="absolute"
-        role="group"
-        left="1%"
-        bottom="40px"
-        cursor="pointer"
-        onClick={() => {
-          if (props.data.page === 1) {
-            document.getElementById("skill_desc_icon").style.opacity = 1;
-            document.getElementById("skill_desc").style.opacity = 1;
-            document.getElementById("logoimg")?.remove();
-          }
-          props.update(() => {
-            if (previous_page !== 0) back=true 
-            return {
-              page: previous_page > 0 ? previous_page : 1,
-              content: previous_page > 0 ? props.data.content : "main",
-            };
-          });
-        }}
-      >
-        <Image
-          height="40px"
-          filter="invert(80%)"
-          opacity="0.1"
-          transition="all 0.4s ease-in-out"
-          _groupHover={{ opacity: 1 }}
-          src={previous}
-        />
-      </Button>
-
-      {next_page > maxpage[props.data.content] ? (
-        ""
-      ) : (
-        <Button
-          position="absolute"
-          role="group"
-          right={"1%"}
-          bottom={"40px"}
-          cursor={"pointer"}
-          onClick={() =>
-            props.update({
-              page: next_page,
-              content: props.data.content,
-            })
-          }
-        >
-          <Image
-            height="40px"
-            filter="invert(80%)"
-            opacity="0.1"
-            transition="all 0.4s ease-in-out"
-            _groupHover={{ opacity: 1 }}
-            src={nextarrow}
-          />
-        </Button>
-      )}
-    </>
-  );
-};
-
-const importMotiondiv = (props) => {
-  let text = (
-    <Container
-      fontSize="24px"
-      lineHeight="2rem"
-      position="absolute"
-      top="30%"
-      left="10%"
-      textAlign="left"
-    >
-      {props.data.page === 1 && SkillPage1[props.data.content]}
-      {props.data.page === 2 && SkillPage2[props.data.content]}
-      {props.data.page === 3 && SkillPage3[props.data.content]}
-    </Container>
-  );
-  if (props.data.page !== 1 || back) {
-    back = false
-    return text;
-  } else
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 2.5 }}
-      >
-        {text}
-      </motion.div>
-    );
-};
-
 export default function (props) {
-  let image = SetImage(props.data.content);
   let programming = ["go", "rust", "html", "java", "js", "php", "python", "ts"];
   let frameworks = ["django", "react", "svelte"];
   let libraries = ["jquery"];
   let certifications = [""];
-  if (props.data.content === "main")
+  if (props.data === "main")
     return (
       <>
         {SetBox("Programming Languages", programming, props)}
@@ -293,36 +171,4 @@ export default function (props) {
         {SetBox("Certifications", certifications, props)}
       </>
     );
-  return (
-    <>
-      <Image
-        height={110}
-        width={110}
-        src={image}
-        position="absolute"
-        top="5%"
-        left={
-          props.data.content === "django"
-            ? "7%"
-            : props.data.content === "go"
-            ? "7%"
-            : "5%"
-        }
-        transform={
-          props.data.content === "go"
-            ? "scale(1.5)"
-            : props.data.content === "django"
-            ? "scale(1.5)"
-            : ""
-        }
-        opacity="0"
-        id="skill_desc_icon"
-      ></Image>
-      <Text opacity="0" id="skill_desc" fontSize="40px" position="absolute" top="9%" left="20%">
-        {SetText(props.data.content)}
-      </Text>
-      {importMotiondiv(props)}
-      <Box>{PrevNextButton(props)}</Box>
-    </>
-  );
 }
