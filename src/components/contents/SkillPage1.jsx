@@ -11,6 +11,9 @@ export default {
     <>
       Go言語はGoogle社が開発・公開しているプログラミング言語です。
       <br />
+      テック企業、ブロックチェーン業界で広く使われています。
+      <br />
+      <br />
       <br />
       <br />
       特徴
@@ -26,6 +29,9 @@ export default {
         </ListItem>
         <ListItem fontSize="15px">
           <Text fontSize="24px">マルチスレッド処理を担当するGo Routine</Text>
+        </ListItem>
+        <ListItem fontSize="15px">
+          <Text fontSize="24px">ガーベジコレクタを使用したメモリの管理</Text>
         </ListItem>
       </UnorderedList>
     </>

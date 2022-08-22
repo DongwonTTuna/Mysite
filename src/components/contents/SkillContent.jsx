@@ -14,8 +14,6 @@ import {
 import { motion } from "framer-motion";
 import SkillPage1 from "./SkillPage1";
 import SkillPage2 from "./SkillPage2";
-import SkillPage3 from "./SkillPage3";
-import SkillPage4 from "./SkillPage4";
 import go from "../../static/img/go.png";
 import rust from "../../static/img/rust.png";
 import django from "../../static/img/django.png";
@@ -30,6 +28,7 @@ import svelte from "../../static/img/svelte.png";
 import ts from "../../static/img/typescript.png";
 import nextarrow from "../../static/img/next.png";
 import previous from "../../static/img/previous.png";
+let back = false
 let maxpage = {
   go: 3,
   rust: 3,
@@ -188,31 +187,36 @@ const PrevNextButton = (props) => {
   let next_page = props.data.page + 1;
   return (
     <>
-      {props.data.page > 1 && (
-        <Button
-          position="absolute"
-          role="group"
-          left="1%"
-          bottom="40px"
-          cursor="pointer"
-          onClick={() => {
-            if(props.data.page === 2) {document.getElementById('skill_desc_icon').style.opacity = 1;document.getElementById('logoimg')?.remove()}
-            props.update({
-              page: previous_page > 1 ? previous_page : 1,
-              content: previous_page > 1 ? props.data.content : "main",
-            });
-          }}
-        >
-          <Image
-            height="40px"
-            filter="invert(80%)"
-            opacity="0.1"
-            transition="all 0.4s ease-in-out"
-            _groupHover={{ opacity: 1 }}
-            src={previous}
-          />
-        </Button>
-      )}
+      <Button
+        position="absolute"
+        role="group"
+        left="1%"
+        bottom="40px"
+        cursor="pointer"
+        onClick={() => {
+          if (props.data.page === 1) {
+            document.getElementById("skill_desc_icon").style.opacity = 1;
+            document.getElementById("skill_desc").style.opacity = 1;
+            document.getElementById("logoimg")?.remove();
+          }
+          props.update(() => {
+            if (previous_page !== 0) back=true 
+            return {
+              page: previous_page > 0 ? previous_page : 1,
+              content: previous_page > 0 ? props.data.content : "main",
+            };
+          });
+        }}
+      >
+        <Image
+          height="40px"
+          filter="invert(80%)"
+          opacity="0.1"
+          transition="all 0.4s ease-in-out"
+          _groupHover={{ opacity: 1 }}
+          src={previous}
+        />
+      </Button>
 
       {next_page > maxpage[props.data.content] ? (
         ""
@@ -259,8 +263,10 @@ const importMotiondiv = (props) => {
       {props.data.page === 3 && SkillPage3[props.data.content]}
     </Container>
   );
-  if (props.data.page !== 1) return text;
-  else
+  if (props.data.page !== 1 || back) {
+    back = false
+    return text;
+  } else
     return (
       <motion.div
         initial={{ opacity: 0 }}
@@ -278,7 +284,6 @@ export default function (props) {
   let frameworks = ["django", "react", "svelte"];
   let libraries = ["jquery"];
   let certifications = [""];
-  console.log(props);
   if (props.data.content === "main")
     return (
       <>
@@ -288,33 +293,34 @@ export default function (props) {
         {SetBox("Certifications", certifications, props)}
       </>
     );
-  console.log(props.data.content);
   return (
     <>
-      {props.data.page !== 1 && (
-        <>
-          <Image
-            height={110}
-            width={110}
-            src={image}
-            position="absolute"
-            top="5%"
-            left={props.data.content === "django" ? "7%" : props.data.content === "go" ? "7%" : "5%"}
-            transform={
-              props.data.content === "go"
-                ? "scale(1.5)"
-                : props.data.content === "django"
-                ? "scale(1.5)"
-                : ""
-            }
-            opacity="0"
-            id="skill_desc_icon"
-          ></Image>
-          <Text fontSize="40px" position="absolute" top="9%" left="20%">
-            {SetText(props.data.content)}
-          </Text>
-        </>
-      )}
+      <Image
+        height={110}
+        width={110}
+        src={image}
+        position="absolute"
+        top="5%"
+        left={
+          props.data.content === "django"
+            ? "7%"
+            : props.data.content === "go"
+            ? "7%"
+            : "5%"
+        }
+        transform={
+          props.data.content === "go"
+            ? "scale(1.5)"
+            : props.data.content === "django"
+            ? "scale(1.5)"
+            : ""
+        }
+        opacity="0"
+        id="skill_desc_icon"
+      ></Image>
+      <Text opacity="0" id="skill_desc" fontSize="40px" position="absolute" top="9%" left="20%">
+        {SetText(props.data.content)}
+      </Text>
       {importMotiondiv(props)}
       <Box>{PrevNextButton(props)}</Box>
     </>

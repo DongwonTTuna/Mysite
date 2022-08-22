@@ -2,10 +2,11 @@ import React from "react";
 export default {
   go: (
     <>
-      Go言語の性能、作業速度の迅速さを最大限に引き出せるよう、
+    後ほどリンクが貼られる予定です。
+    Telegram Botを使用した自動取引システム
       <br />
-      勉強に励んでおります。
       <br />
+    Line Botを使用した電車の到着時間の参照システム
     </>
   ),
   ts: (

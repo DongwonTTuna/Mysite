@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Box, Container, Center } from "@chakra-ui/react";
 import SkillContent, { SetText, SetImage } from "./contents/SkillContent";
