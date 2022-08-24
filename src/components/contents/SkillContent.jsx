@@ -82,58 +82,53 @@ const SetImage = (item) => {
 };
 const SetBox = (itemname, items, props) => {
   return (
-    <Box
-      display="flex"
-      flexDir="column"
-      gap="50px"
-      minW="100%"
-      m="0 auto"
-      marginBottom="100px"
-    >
-      <Text
-        backgroundColor="rgba(125,125,125,0.771)"
-        borderRadius="10px"
-        p="15px"
-      >
-        {itemname}
-      </Text>
-      <Container
-        borderRadius="10px"
-        height="180px"
-        display="grid"
-        gridTemplateColumns="1fr 1fr 1fr 1fr 1fr"
-        gap="10px"
-        rowGap="40px"
-        w="100%"
-        margin="0 auto"
-      >
-        {items.map((item) => {
-          if (item === "")
-            return console.log(
-              "배열에 빈 항목이 있습니다. SkillContent.jsx -> " + itemname
+    <Box gap="50px" minW="100%" m="0 auto" marginBottom="50px">
+      <Container px="10px">
+        <Text
+          backgroundColor="rgba(125,125,125,0.771)"
+          borderRadius="10px"
+          p="15px"
+        >
+          {itemname}
+        </Text>
+        <Container
+          borderRadius="10px"
+          height="180px"
+          display="grid"
+          gridTemplateColumns={{ base: "1fr 1fr", xl: "1fr 1fr 1fr 1fr 1fr" }}
+          rowGap="40px"
+          w="100%"
+          m="0 auto"
+          mt="50px"
+        >
+          {items.map((item) => {
+            if (item === "")
+              return console.log(
+                "배열에 빈 항목이 있습니다. SkillContent.jsx -> " + itemname
+              );
+            let top;
+            if (item === "go" || item === "php" || item === "django") {
+              top = "-10px";
+            } else {
+              top = "15px";
+            }
+            return PopOver(
+              <Container height="110">
+                <Image
+                  position="absolute"
+                  src={SetImage(item)}
+                  height="110px"
+                  width="110px"
+                  cursor="pointer"
+                  _hover={{ transform: "scale(1.2)" }}
+                  transition="all 0.4s ease-in-out"
+                ></Image>
+              </Container>,
+              item,
+              top
             );
-          let top;
-          if (item === "go" || item === "php" || item === "django") {
-            top = "-10px";
-          } else {
-            top = "15px";
-          }
-          return PopOver(
-            <Container height="110">
-              <Image
-                position="absolute"
-                src={SetImage(item)}
-                height="110px"
-                width="110px"
-                cursor="pointer"
-                _hover={{ transform: "scale(1.2)" }}
-                transition="all 0.4s ease-in-out"
-              ></Image>
-            </Container>,
-            item,
-            top
-          );
-        })}
+          })}
+        </Container>
       </Container>
     </Box>
   );

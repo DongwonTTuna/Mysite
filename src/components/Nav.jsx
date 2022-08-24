@@ -21,11 +21,12 @@ export default function () {
       _hover={{ backgroundColor: "#373636" }}
       position="relative"
       display="flex"
+      justifyContent={{base:"end", md: "center"}}
     >
       <ChakraBox
         position="absolute"
         left="20px"
-        top="12px"
+        top={{base:"50px" ,md: "12px"}}
         whileHover={{
           rotate: 360,
         }}
@@ -48,11 +49,13 @@ export default function () {
         />
       </ChakraBox>
       <Container
-        w="500px"
-        margin="0 auto"
+        w="30vw"
+        maxW="500px"
+        m="0"
         display="flex"
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent={{base: "end" ,md: "space-between"}}
+        flexDirection={{base: "column", md: "row"}}
       >
         <Container
           role="group"

@@ -22,26 +22,30 @@ export default function () {
         >
           Skills
         </Center>
-        <Container
+        <Box
           position="relative"
-          minWidth="1400px"
-          minHeight="1000px"
+          minWidth="450px"
+          width="75vw"
+          maxW="1400px"
+          minH="900px"
           backgroundColor="rgb(56,56,56)"
-          p="20px"
+          py="25px"
           borderRadius="10px"
           textAlign="center"
           zIndex="10"
+          display="flex"
+          justifyContent="center"
         >
           <Container
             display="grid"
-            gridTemplateColumns="1fr 1fr"
+            gridTemplateColumns={{ base: "1fr", xl: "1fr 1fr" }}
             gap="30px"
             rowGap="100px"
             minW="100%"
           >
             <SkillContent data={"main"} />
           </Container>
-        </Container>
+        </Box>
       </Box>
     </ChangePage>
   );

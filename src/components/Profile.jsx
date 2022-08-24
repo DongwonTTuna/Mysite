@@ -7,7 +7,8 @@ export default function () {
     <ChangePage>
       <Box position={"relative"} width={"100%"}>
         <Container
-          minW="1400px"
+          w="70vw"
+          maxW="1400px"
           minH="1000px"
           margin="0 auto"
           marginTop="100px"

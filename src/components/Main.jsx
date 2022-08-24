@@ -37,17 +37,17 @@ export default () => {
           backgroundImage={BackgroundImg}
           backgroundSize="100% 100%"
           backgroundRepeat="no-repeat"
-          minH="1200px"
-          minW="2000px"
+          minH={{base:"600px",md: "900px",lg:"1200px"}}
+          minW={{base:"1000px",md:"1500px",lg: "2000px"}}
         >
           <Popover trigger="hover">
             <PopoverTrigger>
               <Container
                 minH="135px"
                 position="absolute"
-                w="135px"
-                top="432px"
-                left="781px"
+                w={{base:"70px",md: "100px",lg:"135px"}}
+                top={{base:"215px",md: "325px",lg:"432px"}}
+                left={{base:"387px",md: "583px",lg:"777px"}}
               >
                 <Image
                   borderRadius="50%"
@@ -83,9 +83,9 @@ export default () => {
             <Container
                 minH="135px"
                 position="absolute"
-                w="135px"
-                top="533px"
-                left="1278px"
+                w={{base:"70px",md: "100px",lg:"135px"}}
+                top={{base:"265px",md: "400px",lg:"532px"}}
+                left={{base:"644px",md: "968px",lg:"1289px"}}
               >
               <Image
                 borderRadius="50%"
