@@ -82,8 +82,10 @@ const SetImage = (item) => {
 };
 const SetBox = (itemname, items, props) => {
   return (
-    <Box gap="50px" minW="100%" m="0 auto" marginBottom="50px">
-      <Container px="10px">
+    <Box gap="50px" minW="100%" m="0 auto">
+      <Container
+        px="10px"
+      >
         <Text
           backgroundColor="rgba(125,125,125,0.771)"
           borderRadius="10px"
@@ -93,13 +95,31 @@ const SetBox = (itemname, items, props) => {
         </Text>
         <Container
           borderRadius="10px"
-          height="180px"
+          height="fit-content"
           display="grid"
-          gridTemplateColumns={{ base: "1fr 1fr", xl: "1fr 1fr 1fr 1fr 1fr" }}
-          rowGap="40px"
+          gridTemplateColumns={{
+            base: "1fr 1fr",
+            md: "1fr 1fr 1fr",
+            lg: "1fr 1fr 1fr 1fr",
+            xl: "1fr 1fr 1fr",
+            "2xl": "1fr 1fr 1fr 1fr",
+          }}
+          gap="40px"
           w="100%"
           m="0 auto"
-          mt="50px"
+          pl={{base:"30px",lg:"10px",'2xl':'0'}}
+          pr={{
+            base: "0px",
+            xl: "50px",
+            "2xl": "0px",
+          }}
+          mt={{
+            base: "40px",
+            md: "40px",
+            lg: "40px",
+            xl: "40px",
+            "2xl": "50px",
+          }}
         >
           {items.map((item) => {
             if (item === "")

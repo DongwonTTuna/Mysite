@@ -25,7 +25,13 @@ export default function () {
         <Box
           position="relative"
           minWidth="450px"
-          width="75vw"
+          width={{
+            base: "370px",
+            md: "600px",
+            lg: "800px",
+            xl: "1000px",
+            "2xl": "1400px",
+          }}
           maxW="1400px"
           minH="900px"
           backgroundColor="rgb(56,56,56)"
@@ -40,8 +46,8 @@ export default function () {
             display="grid"
             gridTemplateColumns={{ base: "1fr", xl: "1fr 1fr" }}
             gap="30px"
-            rowGap="100px"
             minW="100%"
+            rowGap={{base:"40px", 'xl':'0px'}}
           >
             <SkillContent data={"main"} />
           </Container>
