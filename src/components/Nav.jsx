@@ -14,7 +14,7 @@ export default function () {
   return (
     <Box
       minW="100%"
-      paddingY="20px"
+      paddingY="25px"
       transition="all 0.4s ease-in-out"
       fontSize="28px"
       zIndex="5"
@@ -26,7 +26,7 @@ export default function () {
       <ChakraBox
         position="absolute"
         left="20px"
-        top={{base:"50px" ,md: "12px"}}
+        top={{base:"50px" ,md: "11px"}}
         whileHover={{
           rotate: 360,
         }}
@@ -56,6 +56,7 @@ export default function () {
         alignItems="center"
         justifyContent={{base: "end" ,md: "space-between"}}
         flexDirection={{base: "column", md: "row"}}
+
       >
         <Container
           role="group"
@@ -65,17 +66,19 @@ export default function () {
             currentRender.current = "profile";
             navigate("/profile");
           }}
+          position="relative"
         >
           profile
           <Container
-            w={currentRender.current === "profile" ? "100%" : "0px"}
+            w={currentRender.current === "profile" ? "80px" : "0px"}
             px="1"
-            pb="3"
             borderBottom={"2px"}
+            position="absolute"
+            bottom="-11px"
             opacity={currentRender.current === "profile" ? "1" : "0"}
             borderColor="rgba(255,255,255,0.87)"
             _groupHover={{
-              width: "100%",
+              width: "80px",
               opacity: "1",
               transition: "width 0.3s ease-in-out",
             }}
@@ -89,20 +92,23 @@ export default function () {
             currentRender.current = "skill";
             navigate("/skills");
           }}
+          mt={{base: "20px", md: "0"}}
+          position="relative"
         >
           skills
           <Container
-            w={currentRender.current === "skill" ? "100%" : "0px"}
+            w={currentRender.current === "skill" ? "58px" : "0px"}
             px="1"
-            pb="3"
+            bottom="-4px"
             borderBottom={"2px"}
             opacity={currentRender.current === "skill" ? "1" : "0"}
             borderColor="rgba(255,255,255,0.87)"
             _groupHover={{
-              width: "100%",
+              width: "58px",
               opacity: "1",
               transition: "width 0.3s ease-in-out",
             }}
+            position="absolute"
           />
         </Container>
         <Container
@@ -113,20 +119,23 @@ export default function () {
             currentRender.current = "works";
             navigate("/works");
           }}
+          mt={{base: "20px", md: "0"}}
+          position="relative"
         >
           works
           <Container
-            w={currentRender.current === "works" ? "100%" : "0px"}
+            w={currentRender.current === "works" ? "72px" : "0px"}
             px="1"
-            pb="3"
             borderBottom={"2px"}
             opacity="0"
+            bottom="-4px"
             borderColor="rgba(255,255,255,0.87)"
             _groupHover={{
-              width: "100%",
+              width: "72px",
               opacity: "1",
               transition: "width 0.3s ease-in-out",
             }}
+            position="absolute"
           />
         </Container>
       </Container>

@@ -107,12 +107,6 @@ const SetBox = (itemname, items, props) => {
           gap="40px"
           w="100%"
           m="0 auto"
-          pl={{base:"30px",lg:"10px",'2xl':'0'}}
-          pr={{
-            base: "0px",
-            xl: "50px",
-            "2xl": "0px",
-          }}
           mt={{
             base: "40px",
             md: "40px",
@@ -133,7 +127,7 @@ const SetBox = (itemname, items, props) => {
               top = "15px";
             }
             return PopOver(
-              <Container height="110">
+              <Container height="110" display="flex" alignItems="center" justifyContent="center">
                 <Image
                   position="absolute"
                   src={SetImage(item)}
@@ -164,7 +158,6 @@ const PopOver = (Div, page, top) => {
         p="2"
         backgroundColor="#242424"
         borderColor="#242424"
-        left="13px"
       >
         <PopoverArrow
           backgroundColor="#242424"

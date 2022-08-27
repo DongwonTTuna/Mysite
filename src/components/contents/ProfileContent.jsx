@@ -21,7 +21,7 @@ export default function () {
           src={profileimg}
         />
       </Container>
-      <Center width="fit-content" margin="0 auto" marginTop="100px">
+      <Center marginTop="100px">
         <Stack spacing="2rem">
           <Text fontSize="2rem" textAlign="center">
             Dongwon Lee
@@ -32,7 +32,7 @@ export default function () {
       <Container display="flex" mt="100px" flexDirection={{base:'column', '2xl':'row'}} gap="30px" justifyContent="center">
         <Container>
           <Text textAlign="center">Blockchain 関係</Text>
-          <UnorderedList w="fit-content" m="0 auto" listStyleType="none" lineHeight="2.5rem" mt="40px" s>
+          <UnorderedList w="fit-content" m="0 auto" listStyleType="none" lineHeight="2.5rem" mt="40px">
             <ListItem>
               <Text fontSize={{base:'18px',lg:'24px'}} whiteSpace={{base:'',xl:'nowrap'}}>
                 ・2018~2019 TEU Korea Ambassador
@@ -47,7 +47,7 @@ export default function () {
         </Container>
         <Container mt={{base:'40px','2xl':'0'}}>
           <Text textAlign="center">キャリア</Text>
-          <UnorderedList w="fit-content" m="0 auto" listStyleType="none" lineHeight="2rem" mt="20px" s>
+          <UnorderedList w="fit-content" m="0 auto" listStyleType="none" lineHeight="2rem" mt="20px">
             <ListItem>
               <Text fontSize={{base:'18px',lg:'24px'}} whiteSpace={{base:'',xl:'nowrap'}}>
                 ・東京情報クリエイター工学院専門学校&nbsp;&nbsp;&nbsp;在学中

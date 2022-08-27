@@ -118,7 +118,7 @@ export default () => {
         </Container>
       </Container>
       <Container mb="400px">
-        <Text>Updating continueously. Please wait</Text>
+        <Text>Updating continuously. Please wait</Text>
       </Container>
     </ChangePage>
   );

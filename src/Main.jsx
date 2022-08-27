@@ -17,6 +17,7 @@ function App() {
       lineHeight={"24px"}
       fontWeight="normal"
       fontSize={"24px"}
+      pb="100px"
     >
       <Nav />
       <AnimatePresence exitBeforeEnter initial={true}>
