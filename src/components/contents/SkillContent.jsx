@@ -22,70 +22,25 @@ import python from "../../static/img/python.png";
 import react from "../../static/img/react.png";
 import svelte from "../../static/img/svelte.png";
 import ts from "../../static/img/typescript.png";
-const SetText = (page) => {
-  switch (page) {
-    case "go":
-      return "Go Language";
-    case "python":
-      return "Python";
-    case "rust":
-      return "Rust";
-    case "django":
-      return "Django";
-    case "html":
-      return "HTML";
-    case "java":
-      return "Java";
-    case "jquery":
-      return "Jquery";
-    case "js":
-      return "JavaScript";
-    case "php":
-      return "PHP";
-    case "react":
-      return "React";
-    case "svelte":
-      return "Svelte";
-    case "ts":
-      return "Typescript";
-  }
+const texts = {
+  go: "Go Language",
+  python: "Python",
+  rust: "Rust",
+  django: "Django",
+  html: "HTML",
+  java: "Java",
+  jquery: "jQuery",
+  js: "JavaScript",
+  php: "PHP",
+  react: "React",
+  svelte: "Svelte",
+  ts: "TypeScript",
 };
-const SetImage = (item) => {
-  switch (item) {
-    case "main":
-      return "";
-    case "go":
-      return go;
-    case "rust":
-      return rust;
-    case "django":
-      return django;
-    case "html":
-      return html;
-    case "java":
-      return java;
-    case "jquery":
-      return jquery;
-    case "js":
-      return js;
-    case "php":
-      return php;
-    case "python":
-      return python;
-    case "react":
-      return react;
-    case "svelte":
-      return svelte;
-    case "ts":
-      return ts;
-  }
-};
-const SetBox = (itemname, items, props) => {
+const images = { main: "", go: go, rust: rust,django:django, html: html, java: java, jquery:jquery, js:js, php:php, react:react, svelte:svelte,python:python, ts:ts};
+const SetBox = (itemname, items) => {
   return (
     <Box gap="50px" minW="100%" m="0 auto">
-      <Container
-        px="10px"
-      >
+      <Container px="10px">
         <Text
           backgroundColor="rgba(125,125,125,0.771)"
           borderRadius="10px"
@@ -127,10 +82,15 @@ const SetBox = (itemname, items, props) => {
               top = "15px";
             }
             return PopOver(
-              <Container height="110" display="flex" alignItems="center" justifyContent="center">
+              <Container
+                height="110"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
                 <Image
                   position="absolute"
-                  src={SetImage(item)}
+                  src={images[item]}
                   height="110px"
                   width="110px"
                   cursor="pointer"
@@ -148,7 +108,7 @@ const SetBox = (itemname, items, props) => {
   );
 };
 const PopOver = (Div, page, top) => {
-  const Text = SetText(page);
+  const Text = texts[page];
   return (
     <Popover key={page} trigger="hover" delay="300" isLazy="true">
       <PopoverTrigger>{Div}</PopoverTrigger>
@@ -177,10 +137,10 @@ export default function (props) {
   if (props.data === "main")
     return (
       <>
-        {SetBox("Programming Languages", programming, props)}
-        {SetBox("Frameworks", frameworks, props)}
-        {SetBox("Libraries", libraries, props)}
-        {SetBox("Certifications", certifications, props)}
+        {SetBox("Programming Languages", programming)}
+        {SetBox("Frameworks", frameworks)}
+        {SetBox("Libraries", libraries)}
+        {SetBox("Certifications", certifications)}
       </>
     );
 }

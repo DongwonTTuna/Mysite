@@ -9,17 +9,10 @@ import {
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
-import profileimg from "../../static/img/Maguro.jpeg";
 export default function () {
   return (
     <Box height="100%" margin="0">
       <Container width={"fit-content"} margin={"0 auto"} paddingTop="100px">
-        <Image
-          width="150px"
-          height="150px"
-          borderRadius="50%"
-          src={profileimg}
-        />
       </Container>
       <Center marginTop="100px">
         <Stack spacing="2rem">

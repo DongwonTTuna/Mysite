@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Box, Container, Image, chakra } from "@chakra-ui/react";
 import { motion, isValidMotionProp } from 'framer-motion';
-import { useNavigate } from "react-router-dom";
-import profileimg from "../static/img/Maguro.jpeg";
+import { useNavigate,useLocation } from "react-router-dom";
+import profileimg from "../static/img/MaguroIcon.png";
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
@@ -10,7 +10,7 @@ const ChakraBox = chakra(motion.div, {
 
 export default function () {
   const navigate = useNavigate();
-  const currentRender = useRef("");
+  const location = useLocation();
   return (
     <Box
       minW="100%"
@@ -18,7 +18,6 @@ export default function () {
       transition="all 0.4s ease-in-out"
       fontSize="28px"
       zIndex="5"
-      _hover={{ backgroundColor: "#373636" }}
       position="relative"
       display="flex"
       justifyContent={{base:"end", md: "center"}}
@@ -42,8 +41,6 @@ export default function () {
           borderRadius="50%"
           src={profileimg}
           onClick={() => {
-            console.log('click')
-            currentRender.current = "";
             navigate("/");
           }}
         />
@@ -56,26 +53,24 @@ export default function () {
         alignItems="center"
         justifyContent={{base: "end" ,md: "space-between"}}
         flexDirection={{base: "column", md: "row"}}
-
       >
         <Container
           role="group"
           w="fit-content"
           cursor="pointer"
           onClick={() => {
-            currentRender.current = "profile";
             navigate("/profile");
           }}
           position="relative"
         >
           profile
           <Container
-            w={currentRender.current === "profile" ? "80px" : "0px"}
+            w={location.pathname === "/profile" ? "80px" : "0px"}
             px="1"
             borderBottom={"2px"}
             position="absolute"
             bottom="-11px"
-            opacity={currentRender.current === "profile" ? "1" : "0"}
+            opacity={location.pathname === "/profile" ? "1" : "0"}
             borderColor="rgba(255,255,255,0.87)"
             _groupHover={{
               width: "80px",
@@ -89,7 +84,6 @@ export default function () {
           w="fit-content"
           cursor="pointer"
           onClick={() => {
-            currentRender.current = "skill";
             navigate("/skills");
           }}
           mt={{base: "20px", md: "0"}}
@@ -97,11 +91,11 @@ export default function () {
         >
           skills
           <Container
-            w={currentRender.current === "skill" ? "58px" : "0px"}
+            w={location.pathname === "/skills" ? "58px" : "0px"}
             px="1"
             bottom="-4px"
             borderBottom={"2px"}
-            opacity={currentRender.current === "skill" ? "1" : "0"}
+            opacity={location.pathname === "/skills" ? "1" : "0"}
             borderColor="rgba(255,255,255,0.87)"
             _groupHover={{
               width: "58px",
@@ -116,7 +110,6 @@ export default function () {
           w="fit-content"
           cursor="pointer"
           onClick={() => {
-            currentRender.current = "works";
             navigate("/works");
           }}
           mt={{base: "20px", md: "0"}}
@@ -124,12 +117,13 @@ export default function () {
         >
           works
           <Container
-            w={currentRender.current === "works" ? "72px" : "0px"}
+            w={location.pathname === "/works" ? "72px" : "0px"}
             px="1"
             borderBottom={"2px"}
-            opacity="0"
+            opacity={location.pathname === "/works" ? "1" : "0"}
             bottom="-4px"
             borderColor="rgba(255,255,255,0.87)"
+            margin="0 auto"
             _groupHover={{
               width: "72px",
               opacity: "1",

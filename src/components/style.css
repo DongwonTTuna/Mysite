@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+html {
+  overflow-x: hidden;
+}
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 140%;
+  padding-bottom: 140%;
+  background-color: #f5d7d5;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 15s;
+  z-index: 2;
+}
+
+body::before {
+  bottom: 1400px;
+  border-radius: 47%;
+}
+
+body::after {
+  bottom: 1400px;
+  opacity: 0.5;
+  border-radius: 52%;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, 0) rotateZ(0deg);
+  }
+  50% {
+    transform: translate(-50%, -2%) rotateZ(180deg);
+  }
+  100% {
+    transform: translate(-50%, 0%) rotateZ(360deg);
+  }
+}
+@media screen and (min-width: 0px) and (max-width: 1280px) {
+  body::before,
+  body::after {
+    height: 3000px;
+    width: 3000px;
+    padding-bottom: 0;
+    animation-duration: 20s;
+  }
+}

@@ -4,7 +4,7 @@ import { chakra } from "@chakra-ui/react";
 const ChakraBox = chakra(motion.article, {
   shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
 });
-export default ({children}) => {
+export default (props) => {
   return (
     <ChakraBox
       initial={{ opacity: 0, x: 0, y: 20 }}
@@ -12,8 +12,9 @@ export default ({children}) => {
       exit={{ opacity: 0, x: 0, y: 20 }}
       transition={{ duration: 0.3, type: "easeInOut" }}
       overflow="hidden"
+      {...props}
     >
-      {children}
+      {props.children}
     </ChakraBox>
   );
 };
