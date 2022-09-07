@@ -111,7 +111,7 @@ export default function () {
               zIndex="-2"
             />
           </Box>
-          <Box className="cloudbox" opacity=".5" transform="scaleX(-1)" position="relative" top="420px" left="15%">
+          <Box className="cloudbox" opacity=".5" transform="scaleX(-1)" position="relative" top="360px" left="15%">
             <Image
               w="1200px"
               position="absolute"
