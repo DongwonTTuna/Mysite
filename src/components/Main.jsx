@@ -12,17 +12,7 @@ export default function () {
 
   return (
     <ChangePage>
-      <Box w="100%" position="relative" top="10%" left="20%" zIndex="10">
-        <Stack
-          position="absolute"
-          fontSize="32px"
-          fontWeight="400"
-          fontFamily="Roboto"
-          textColor="#f59898"
-        >
-          <Text>Dongwon Lee</Text>
-        </Stack>
-      </Box>
+
     </ChangePage>
   );
 }

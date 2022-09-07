@@ -10,6 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  overflow-x: hidden;
 }
 html {
   overflow-x: hidden;
@@ -90,5 +91,14 @@ body::after {
     width: 3000px;
     padding-bottom: 0;
     animation-duration: 20s;
+  }
+}
+@media screen and (min-width:3400px){
+  body::before {
+    bottom: 40vw;
+  }
+  
+  body::after {
+    bottom: 39vw;
   }
 }
