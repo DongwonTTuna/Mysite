@@ -32,6 +32,7 @@ export default function () {
       fontSize="28px"
       zIndex="5"
       position="relative"
+      top="0"
       display="flex"
       justifyContent={{ base: "end", md: "center" }}
     >

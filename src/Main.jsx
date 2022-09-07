@@ -15,6 +15,7 @@ import cloud3 from "./static/img/c3.png";
 import cloud4 from "./static/img/c4.png";
 import cloud5 from "./static/img/c5.png";
 import cloud6 from "./static/img/c6.png";
+import sand from "./static/img/sand.svg";
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
 });
@@ -29,6 +30,7 @@ function App() {
       fontSize={"24px"}
       position="relative"
       h="2500px"
+      overflow="hidden"
     >
       <Box
         position="absolute"
@@ -62,14 +64,14 @@ function App() {
               <Image
                 w="1000px"
                 position="absolute"
-                top="40px"
-                right="-500px"
+                top={{ base: "40px", "2xl": "100px" }}
+                right={{ base: "-500px", "2xl": "4%" }}
                 src={cloud4}
               />
               <Image
                 w="1000px"
                 position="absolute"
-                top="100px"
+                top="60px"
                 right="-290px"
                 zIndex="-4"
                 src={cloud5}
@@ -90,7 +92,7 @@ function App() {
             <Image
               w="800px"
               position="absolute"
-              top="190px"
+              top="100px"
               opacity={{ base: 0, md: 1 }}
               right="20%"
               zIndex="-2"
@@ -102,7 +104,7 @@ function App() {
               w="800px"
               position="absolute"
               top="-40px"
-              opacity={{base:1,md:0,lg:1}}
+              opacity={{ base: 1, md: 0, xl: 1 }}
               left={{ base: "-400px", md: "-10%" }}
               src={cloud}
             />
@@ -125,7 +127,6 @@ function App() {
             />
           </Box>
         </Box>
-
         <ChakraBox
           position="absolute"
           display="flex"
@@ -138,7 +139,38 @@ function App() {
         >
           <Image w="200px" src={boat} zIndex="20" />
         </ChakraBox>
-
+        <Box
+          position="absolute"
+          bottom="0"
+          zIndex="-5"
+          w="100%"
+          mt="1000px"
+          h="1300px"
+          bgGradient="linear(to-b,#3E606F,#25496e)"
+        />
+        <Box
+          w="100%"
+          h="200px"
+          position="absolute"
+          bottom="0"
+          left="0"
+          zIndex="-4"
+          backgroundImage={sand}
+          backgroundRepeat="no-repeat"
+          backgroundSize="cover"
+        />
+        <Box
+          w="100%"
+          h="200px"
+          position="absolute"
+          bottom="0"
+          left="400"
+          opacity=".7"
+          zIndex="-3"
+          backgroundImage={sand}
+          backgroundRepeat="no-repeat"
+          backgroundSize="cover"
+        />
         <AnimatePresence exitBeforeEnter initial={true}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Main />} />
