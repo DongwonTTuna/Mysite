@@ -9,7 +9,6 @@ import cloud3 from "../../static/img/c3.png";
 import cloud4 from "../../static/img/c4.png";
 import cloud5 from "../../static/img/c5.png";
 import cloud6 from "../../static/img/c6.png";
-import Fish from "../../components/Resources/fish";
 import threefish from "../../static/img/threefish.png";
 import fish from "../../static/img/fish.png";
 const ChakraBox = chakra(motion.div, {
@@ -22,11 +21,11 @@ export default function () {
       <Box
         position="absolute"
         top="0"
-        h="2500px"
+        h="3500px"
         w="100%"
         backgroundColor="#3E606F"
         minH="100vh"
-        zIndex="-5"
+        zIndex="-6"
       />
       <Box zIndex="2">
         <Box
@@ -40,7 +39,7 @@ export default function () {
             w="300px"
             position="absolute"
             top="-70px"
-            right="60vw"
+            right={{ base: "6%", md: "10vw" }}
             transform="all"
             zIndex="-3"
             filter="drop-shadow(0px 0px 120px #e36420)"
@@ -50,16 +49,17 @@ export default function () {
               <Image
                 w="1000px"
                 position="absolute"
-                top={{ base: "40px", "2xl": "100px" }}
-                right={{ base: "-500px", "2xl": "4%" }}
+                top={{ base: "320px", md: "40px", "2xl": "100px" }}
+                right={{ base: "-500px", "2xl": "-2%", "3xl": "4%" }}
                 src={cloud4}
               />
               <Image
                 w="1000px"
                 position="absolute"
-                top={{ base: "60px", "2xl": "-80px" }}
+                top={{ base: "230px", md: "60px", "2xl": "-80px" }}
                 right="-290px"
-                zIndex="-4"
+                opacity=".5"
+                zIndex="-2"
                 src={cloud5}
               />
             </Box>
@@ -72,7 +72,8 @@ export default function () {
               position="absolute"
               top="200px"
               right="40%"
-              zIndex="-4"
+              zIndex="-2"
+              opacity=".5"
               src={cloud6}
             />
             <Image
@@ -80,12 +81,10 @@ export default function () {
               position="absolute"
               top="100px"
               opacity={{ base: 0, md: 1 }}
-              right="20%"
+              right="30vw"
               zIndex="-2"
               src={cloud3}
             />
-          </Box>
-          <Box className="cloudbox">
             <Image
               w="800px"
               position="absolute"
@@ -112,15 +111,32 @@ export default function () {
               zIndex="-2"
             />
           </Box>
+          <Box className="cloudbox" opacity=".5" transform="scaleX(-1)" position="relative" top="420px" left="15%">
+            <Image
+              w="1200px"
+              position="absolute"
+              right="0"
+              src={cloud4}
+              zIndex="-2"
+            />
+            <Image
+              w="600px"
+              position="absolute"
+              top="140px"
+              right="50px"
+              src={cloud3}
+              zIndex="-3"
+            />
+          </Box>
         </Box>
         <ChakraBox
           position="absolute"
           display="flex"
           w="100%"
-          animate={{ y: [10, -10, 0, 10], x: [0, 30, -30, 0] }}
-          transition={{ duration: 7, repeat: Infinity, repeatDelay: 0 }}
+          animate={{ y: [10, 0, 10, 0], x: [0, 40, -40, 0] }}
+          transition={{ duration: 10, repeat: Infinity, repeatDelay: 0,repeatType:"reverse" }}
           justifyContent="center"
-          bottom={{ base: "1450px", "4xl": "38vw" }}
+          bottom={{ base: "2260px","3xl":"2230px"}}
           zIndex="-3"
         >
           <Image w="200px" src={boat} zIndex="20" />
@@ -130,27 +146,28 @@ export default function () {
           bottom="0"
           zIndex="-5"
           w="100%"
-          mt="1000px"
-          h="1300px"
-          bgGradient="linear(to-b,#3E606F,#25496e)"
+          mt="1500px"
+          h="2000px"
+          bgGradient="linear(to-b,#3E606F,#1f425e)"
         />
         <ChakraBox
           w="100%"
           animate={{
-            x: ["-10%", "100%"],
+            x: ["-50%", "100%"],
             y: [-30, 30, -30, 30, -30, 30, -30, 30, -30, 30, -30, 30],
           }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           position="absolute"
           bottom=" 600px"
           left="0"
+          zIndex="-5"
         >
-          <Image w="280px" src={fish} />
+          <Image w="240px" src={fish} />
         </ChakraBox>
         <ChakraBox
           w="100%"
           animate={{
-            x: ["100%", "-10%"],
+            x: ["100%", "-50%"],
             y: [-30, 30, -30, 30, -30, 30, -30, 30, -30, 30, -30, 30],
           }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
@@ -158,6 +175,7 @@ export default function () {
           position="absolute"
           bottom=" 1100px"
           left="0"
+          zIndex="-5"
         >
           <Image w="200px" transform="scaleX(-1)" src={threefish} />
         </ChakraBox>

@@ -9,31 +9,32 @@ import Main from "./components/Main";
 import "./components/style.css";
 import Background from "./components/contents/Background";
 
-
 function App() {
   console.log("render");
   const location = useLocation();
   return (
     <Box
-      minH="100vh"
       minW="100%"
       lineHeight={"24px"}
       fontWeight="normal"
       fontSize={"24px"}
       position="relative"
-      h="2500px"
+      h="3500px"
       overflow="hidden"
     >
-      <Nav />
-      <Background/>
-        <AnimatePresence exitBeforeEnter initial={true}>
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<Main />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/works" element={<Works />} />
-          </Routes>
-        </AnimatePresence>
+      <Routes>
+        <Route path="/skills" element={<Nav />} />
+        <Route path="/works" element={<Works />} />
+      </Routes>
+
+      <Background />
+      <AnimatePresence exitBeforeEnter initial={true}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Main />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/works" element={<Works />} />
+        </Routes>
+      </AnimatePresence>
     </Box>
   );
 }
