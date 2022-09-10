@@ -1,22 +1,36 @@
+@import url(sanitize.css);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: "NotoSansJP";
+  src: url(//fonts.gstatic.com/ea/notosansjp/v5/NotoSansJP-Regular.woff2)
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
-  margin: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'NotoSansJP',Inter, Avenir, sans-serif;
+}
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+.wave {
   position: relative;
-  overflow-x: hidden;
 }
-html {
-  overflow-x: hidden;
-}
-body::before,
-body::after {
+.wave::before,
+.wave::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -30,13 +44,13 @@ body::after {
   z-index: -4;
 }
 
-body::before {
-  bottom: 2350px;
+.wave::before {
+  bottom: 2450px;
   border-radius: 47%;
 }
 
-body::after {
-  bottom: 2330px;
+.wave::after {
+  bottom: 2430px;
   opacity: 0.5;
   border-radius: 52%;
 }
@@ -44,13 +58,13 @@ body::after {
 .suncloud img {
   animation: 15s ease-in-out 0s infinite alternate-reverse cloud;
 }
-.cloudbox:nth-child(1) img{
+.cloudbox:nth-child(1) img {
   animation: 20s ease-in-out -1s infinite alternate-reverse cloud;
 }
-.cloudbox:nth-child(2) img{
+.cloudbox:nth-child(2) img {
   animation: 20s ease-in-out -2s infinite alternate-reverse cloud;
 }
-.cloudbox:nth-child(3) img{
+.cloudbox:nth-child(3) img {
   animation: 20s ease-in-out -3s infinite alternate-reverse cloud;
 }
 
@@ -92,4 +106,12 @@ body::after {
     padding-bottom: 0;
     animation-duration: 20s;
   }
+}
+
+svg.w-heatmap rect:active {
+  fill: #aad2e377;
+  stroke-width: 0;
+}
+svg.w-heatmap rect:active rect {
+  width: 200px;
 }

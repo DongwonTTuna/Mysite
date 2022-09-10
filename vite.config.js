@@ -23,6 +23,9 @@ export default defineConfig({
       },
     },
   },
+  esbuild:{
+    //drop: ['console', 'debugger']
+  },
   server: {
     watch: {
       usePolling: true,

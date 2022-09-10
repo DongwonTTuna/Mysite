@@ -1,12 +1,7 @@
 import React, { useCallback } from "react";
-import { Box, Container, Image, chakra } from "@chakra-ui/react";
 import { motion, isValidMotionProp, useAnimation } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import profileimg from "../static/img/MaguroIcon.png";
-
-const ChakraBox = chakra(motion.div, {
-  shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
-});
 
 export default function () {
   const animationcontrol = useAnimation();
@@ -17,35 +12,31 @@ export default function () {
     animationcontrol.start({
       scale: 1.5,
       rotate: 360,
-      transition: { duration: 0.7, ease: "linear", repeat: Infinity, repeatDelay: 0 },
+      transition: {
+        duration: 0.7,
+        ease: "linear",
+        repeat: Infinity,
+        repeatDelay: 0,
+      },
     });
   }
   async function fishendani() {
     animationcontrol.start({ scale: 1, transition: { duration: 1 } });
-    await animationcontrol.start({ rotate: 0, transition: { duration: 0.7, repeat: 0} });
+    await animationcontrol.start({
+      rotate: 0,
+      transition: { duration: 0.7, repeat: 0 },
+    });
   }
   return (
-    <Box
-      minW="100%"
-      paddingY="25px"
-      transition="all 0.4s ease-in-out"
-      fontSize="28px"
-      zIndex="5"
-      position="relative"
-      top="0"
-      display="flex"
-      justifyContent={{ base: "end", md: "center" }}
+    <div
+      className="min-w-[100%] py-[25px] text-[28px] z-[5] relative top-0 flex sm:justify-end ustify-center"
+      style={{ transition: "all 0.4s ease-in-out" }}
     >
-      <ChakraBox
-        position="absolute"
-        left="20px"
-        w="fit-content"
-        h="fit-content"
-        top={{ base: "50px", md: "11px" }}
-        zIndex="100"
+      <motion.div
+        className="absolute left-[20px] w-fit h-fit sm:top-[50px] top-[11px] z-[100]"
         animate={animationcontrol}
         whileHover={() => {
-          console.log('yes')
+          console.log("yes");
           fishani();
         }}
         onHoverEnd={() => {
@@ -57,69 +48,46 @@ export default function () {
         }}
         cursor="pointer"
       >
-        <Image
-          h="50px"
-          w="60px"
-          borderRadius="50%"
+        <img
+          className="h-[50px] w-[60px] rounded-full"
           src={profileimg}
           onClick={() => {
             navigate("/");
           }}
         />
-      </ChakraBox>
-      <Container
-        role="group"
-        w="fit-content"
-        cursor="pointer"
+      </motion.div>
+      <div
+        className="group w-fit cursor-pointer mt-0 sm:mt-[20px] relative"
         onClick={() => {
           navigate("/skills");
         }}
-        mt={{ base: "20px", md: "0" }}
-        position="relative"
       >
         skills
-        <Container
-          w={location.pathname === "/skills" ? "58px" : "0px"}
-          px="1"
-          bottom="-4px"
-          borderBottom={"2px"}
-          opacity={location.pathname === "/skills" ? "1" : "0"}
-          borderColor="rgba(255,255,255,0.87)"
-          _groupHover={{
-            width: "58px",
-            opacity: "1",
+        <div
+          className="px-[1px] absolute bottom-[-4px] border-b-2 border-[rgba(255,255,255,0.87)] group-hover:w-[58px] group-hover:opacity-100"
+          style={{
+            width: location.pathname === "/skills" ? "58px" : "0px",
+            opacity: location.pathname === "/skills" ? "1" : "0",
             transition: "width 0.3s ease-in-out",
           }}
-          position="absolute"
         />
-      </Container>
-      <Container
-        role="group"
-        w="fit-content"
-        cursor="pointer"
+      </div>
+      <div
+        className="group w-fit cursor-pointer mt-0 sm:mt-[20px] relative"
         onClick={() => {
           navigate("/works");
         }}
-        mt={{ base: "20px", md: "0" }}
-        position="relative"
       >
         works
-        <Container
-          w={location.pathname === "/works" ? "72px" : "0px"}
-          px="1"
-          borderBottom={"2px"}
-          opacity={location.pathname === "/works" ? "1" : "0"}
-          bottom="-4px"
-          borderColor="rgba(255,255,255,0.87)"
-          margin="0 auto"
-          _groupHover={{
-            width: "72px",
-            opacity: "1",
+        <div
+          className="px-[1px] absolute bottom-[-4px] border-b-2 border-[rgba(255,255,255,0.87)] group-hover:w-[72px] group-hover:opacity-100"
+          style={{
+            width: location.pathname === "/works" ? "72px" : "0px",
+            opacity: location.pathname === "/works" ? "1" : "0",
             transition: "width 0.3s ease-in-out",
           }}
-          position="absolute"
         />
-      </Container>
-    </Box>
+      </div>
+    </div>
   );
 }
